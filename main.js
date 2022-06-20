@@ -66,19 +66,26 @@ for(let i=0; i < AllLikeButtons.length; i++) {
         thisLikeButtons.addEventListener('click',function( event){
     // !      evitiamo conmportamento di default del browser
             event.preventDefault();
-         // ! ci prendiamo l'elemento html di testo
-         // !che ha il numero relativo a questo btn
-         const relatedNumberText = AllLikesText[i];  
-        console.log("RELATED NUMBER TEXT",relatedNumberText);   
-        // ! ci prendiamo il numero dentro il div
-        let relatedNumber = parseInt(relatedNumberText.innerHTML);
-        console.log("Numero likes",relatedNumber);
-        // ! lo incrementiamo di 1
-        relatedNumber++;
-        // ! lo scriviamo dentro al relatedNumberText
-        relatedNumberText.innerHTML = relatedNumber;
-        });
-}
+
+// !       incrementiamo il like solo se nn ho già clikkato
+        if(!this.classList.contains('like-button--clicked')){
+
+                // ! aggiungo la classe clicked
+                    this.classList.add('like-button--clicked');
+                // ! ci prendiamo l'elemento html di testo
+                // !che ha il numero relativo a questo btn
+                const relatedNumberText = AllLikesText[i];  
+                console.log("RELATED NUMBER TEXT",relatedNumberText);    /*CONSOLE LOG*/
+                // ! ci prendiamo il numero dentro il div
+                let relatedNumber = parseInt(relatedNumberText.innerHTML);
+                console.log("Numero likes",relatedNumber);               /*CONSOLE LOG*/
+                // ! lo incrementiamo di 1
+                relatedNumber++;
+                // ! lo scriviamo dentro al relatedNumberText
+                relatedNumberText.innerHTML = relatedNumber;
+             }
+      });
+ }
 
 
 
